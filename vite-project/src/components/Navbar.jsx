@@ -22,12 +22,17 @@ const Navbar = () => {
             </li>
             <li>
               <Link to="/about" className="hover:text-red-500 transition-all">
-                  About
+                  UseEffect
               </Link>
             </li>
             <li>
-              <Link to="/contact" className="hover:text-red-500 transition-all">
-                  Contact
+              <Link to="/usecontext" className="hover:text-red-500 transition-all">
+                  UseContext
+              </Link>
+            </li>
+            <li>
+              <Link to="/useref" className="hover:text-red-500 transition-all">
+                  UseRef
               </Link>
             </li>
           </ul>

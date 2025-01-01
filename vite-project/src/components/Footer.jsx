@@ -35,7 +35,10 @@ const Footer = () => {
                 </tr>
                 <tr>
                     <td><label className="" htmlFor="">Feedback :</label></td>
-                    <td><textarea className="w-[195px] outline-none" placeholder="Give Your Feedback" name="" id=""></textarea></td>
+                    <td><textarea className="w-[195px] outline-none text-black" placeholder="Give Your Feedback" name="" id=""></textarea></td>
+                </tr>
+                <tr>
+                  <td><button className="text-2xl font-bold bg-black p-2 rounded-lg border border-black" >Submit</button></td>
                 </tr>
             </table>
            </form>
