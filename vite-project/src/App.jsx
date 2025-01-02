@@ -4,6 +4,7 @@ import About from './components/About.jsx';
 import Gallery from './components/Gallery.jsx'
 import UseContext from './components/UseContext.jsx';
 import UseRef from './components/UseRef.jsx'
+import UseMemo from './components/UseMemo.jsx';
 
 export default function App() {
   return (
@@ -15,6 +16,8 @@ export default function App() {
         <Route  path='/gallery' element={<Gallery />} ></Route>
         <Route  path='/usecontext' element={<UseContext />} ></Route>
         <Route  path='/useref' element={<UseRef />} ></Route>
+        <Route  path='/useref' element={<UseRef />} ></Route>
+        <Route  path='/usememo' element={<UseMemo />} ></Route>
       </Routes>
       </BrowserRouter>
     </div>
