@@ -7,12 +7,22 @@
   </head>
   <body>
     <h1>Hello Everybody Welcome to the FullStack Learning...</h1>
-    <a href="about.html">
+    <a href="/about">
       <button style="cursor: pointer;">About</button>
     </a>
-    <img src="img1.png" style="width: 500px; height: 500px;" alt="">
+    <!-- <img src="img1.png" style="width: 500px; height: 500px;" alt="">
     <img src="img2.png" style="width: 500px; height: 500px;" alt="">
     <img src="img3.png" style="width: 500px; height: 500px;" alt="">
-    <img src="img4.png" style="width: 500px; height: 500px;" alt="">
+    <img src="img4.png" style="width: 500px; height: 500px;" alt=""> -->
+
+    <form action="http://localhost:3001/feedback" method="post">
+      <label for="">Name:</label>
+      <input type="text" name="Name">
+      <label for="">Email:</label>
+      <input type="text" name="Email">
+      <label for="">Feedback:</label>
+      <input name="Feedback"></textarea>    
+      <button type="submit">Submit</button>  
+    </form>
   </body>
 </html>

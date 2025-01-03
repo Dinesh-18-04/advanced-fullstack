@@ -40,6 +40,11 @@ const Navbar = () => {
                   UseMemo
               </Link>
             </li>
+            <li>
+              <Link to="/feedback" className="hover:text-red-500 transition-all">
+                  Feedback
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
