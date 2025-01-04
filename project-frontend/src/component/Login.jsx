@@ -1,7 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "./Navbar";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  var [Email, setEmail] = useState("");
+  var [Password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
+    var data = { Email, Password };
+    console.log(data)
+    e.preventDefault();
+    try {
+      const res = await axios.post("http://localhost:6001/login", data);
+      if (res.status === 200) {
+        alert("Logged in Successfully...");
+        navigate("/");
+      } else {
+        alert("Login failed...");
+      }
+    } catch (err) {
+      console.log(err);
+      alert("LogIn failed...");
+    }
+  };
+
   return (
     <div>
       <Navbar />
@@ -14,6 +38,9 @@ const Login = () => {
                 Email:
               </label>
               <input
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
                 type="email"
                 id="email"
                 placeholder="Enter your email"
@@ -25,6 +52,9 @@ const Login = () => {
                 Password:
               </label>
               <input
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
                 type="password"
                 id="password"
                 placeholder="Enter your password"
@@ -32,6 +62,7 @@ const Login = () => {
               />
             </div>
             <button
+              onClick={handleLogin}
               type="submit"
               className="bg-blue-700 font-bold transition-all text-white px-6 py-3 rounded-md hover:bg-red-600 focus:outline-none focus:ring focus:ring-blue-300"
             >

@@ -1,19 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "./Navbar";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  var [Name, setName] = useState("");
+  var [Email, setEmail] = useState("");
+  var [Password, setPassword] = useState("");
+  const navigate = useNavigate()
+
+  var handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = { Name, Email, Password };
+    console.log(data)
+    try {
+      const res = await axios.post("http://localhost:6001/signup", data);
+      if (res.status === 200) {
+        alert("SignUp is Successfull...");
+        navigate("/login")
+      } else {
+        alert("SignUp is failed...");
+      }
+    } catch (err) {
+      console.log(err);
+      alert("SignUp is failed...")
+    }
+  };
   return (
     <div>
       <Navbar />
       <div className="mx-20 mt-3">
         <div className="">
-          <form className="flex flex-col gap-6 w-[500px] mx-auto mt-[10%] p-8 shadow-lg rounded-lg bg-white">
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col gap-6 w-[500px] mx-auto mt-[10%] p-8 shadow-lg rounded-lg bg-white"
+          >
             <h1 className="text-3xl font-bold text-center">Signup</h1>
             <div className="flex flex-col">
               <label htmlFor="name" className="mb-1 font-medium">
                 Name:
               </label>
               <input
+                name="Name"
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
                 type="text"
                 id="name"
                 placeholder="Enter your name"
@@ -25,6 +56,10 @@ const Signup = () => {
                 Email:
               </label>
               <input
+                name="Email"
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
                 type="email"
                 id="email"
                 placeholder="Enter your email"
@@ -36,6 +71,10 @@ const Signup = () => {
                 Password:
               </label>
               <input
+                name="Password"
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
                 type="password"
                 id="password"
                 placeholder="Enter your password"
