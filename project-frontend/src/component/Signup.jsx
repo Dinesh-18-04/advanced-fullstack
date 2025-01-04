@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Navbar from "./Navbar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -28,7 +27,6 @@ const Signup = () => {
   };
   return (
     <div>
-      <Navbar />
       <div className="mx-20 mt-3">
         <div className="">
           <form

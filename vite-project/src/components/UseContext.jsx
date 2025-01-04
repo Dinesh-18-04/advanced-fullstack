@@ -2,7 +2,6 @@ import React from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Comp1 from "./context-component/Comp1";
-import { useContext } from "react";
 export var ThemeProvider = React.createContext();
 const UseContext = () => {
   return (

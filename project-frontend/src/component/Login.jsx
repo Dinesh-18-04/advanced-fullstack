@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import Navbar from "./Navbar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+export var navii = React.createContext();
+import Navbar from "./Navbar";
 
 const Login = () => {
   var [Email, setEmail] = useState("");
@@ -10,13 +11,20 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     var data = { Email, Password };
-    console.log(data)
+    console.log(data);
     e.preventDefault();
     try {
       const res = await axios.post("http://localhost:6001/login", data);
+      // console.log(res.data.isLoggedin);
+      <navii.Provider value={{ isLoggedin: true }}>
+        <div className="">
+          <Navbar />
+        </div>
+      </navii.Provider>;
+
       if (res.status === 200) {
         alert("Logged in Successfully...");
-        navigate("/");
+        navigate("/dashboard");
       } else {
         alert("Login failed...");
       }
@@ -28,7 +36,6 @@ const Login = () => {
 
   return (
     <div>
-      <Navbar />
       <div className="mx-20 mt-3">
         <div className="">
           <form className="flex flex-col gap-6 w-[500px] mx-auto mt-[10%] p-8 shadow-lg rounded-lg bg-white">

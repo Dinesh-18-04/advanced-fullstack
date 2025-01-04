@@ -2,6 +2,7 @@ var express = require("express");
 var mdb = require("mongoose");
 var signup = require('./models/signup')
 var cors = require('cors')
+var env = require("dotenv").config()
 
  
 var app = express();
@@ -12,7 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 mdb
-  .connect("mongodb://localhost:27017/project")
+  .connect(process.env.MONGO_URL)
   .then(() => {
     console.log("MongoDB is connected successfully..");
   })

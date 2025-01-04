@@ -3,15 +3,20 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Signup from "./component/Signup";
 import Login from "./component/Login";
 import Home from "./component/Home";
+import Dashboard from "./component/Dashboard";
 
 export default function App() {
   return (
-    <div className="">
+    <div>
       <BrowserRouter>
+        {/* <Navbar /> */}
         <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/signup" element={<Signup />}></Route>
-          <Route path="/login" element={<Login />}></Route>
+          <Route path="/" element={<Navbar />}>
+            <Route path="/" element={<Home />} />
+            <Route path="signup" element={<Signup />} />
+            <Route path="login" element={<Login />} />
+            <Route path="dashboard" element={<Dashboard />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </div>
