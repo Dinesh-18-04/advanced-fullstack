@@ -11,7 +11,6 @@ const Signup = () => {
   var handleSubmit = async (e) => {
     e.preventDefault();
     const data = { Name, Email, Password };
-    console.log(data)
     try {
       const res = await axios.post("http://localhost:6001/signup", data);
       if (res.status === 200) {
@@ -21,8 +20,7 @@ const Signup = () => {
         alert("SignUp is failed...");
       }
     } catch (err) {
-      console.log(err);
-      alert("SignUp is failed...")
+      alert(err.response.data.Message);
     }
   };
   return (
