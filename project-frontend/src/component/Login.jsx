@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { navii } from "../App";
 
 const Login = () => {
   var [Email, setEmail] = useState("");
   var [Password, setPassword] = useState("");
   const navigate = useNavigate();
-  const { isLoggedin, setisLoggedin } = useContext(navii);
-  const { userName, setuserName } = useContext(navii);
 
   const handleLogin = async (e) => {
     var data = { Email, Password };
@@ -17,17 +13,17 @@ const Login = () => {
     e.preventDefault();
     try {
       const res = await axios.post("http://localhost:6001/login", data);
-
       if (res.status === 200) {
-        setisLoggedin(res.data.isLoggedin);
-        setuserName(res.data.Name);
-        // console.log(res.data.isLoggedin)
+        localStorage.setItem('isLoggedin',res.data.isLoggedin)
         alert("Logged in Successfully...");
+        localStorage.setItem('Name',res.data.Name)
         navigate("/dashboard");
       } else {
+        localStorage.setItem('isLoggedin',false)
         alert("Login failed...");
       }
     } catch (err) {
+      localStorage.setItem('isLoggedin',false)
       console.log(err);
       alert("LogIn failed...");
     }

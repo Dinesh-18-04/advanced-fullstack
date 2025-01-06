@@ -1,20 +1,25 @@
-import React, { useContext } from "react";
-import { Link, Outlet } from "react-router-dom";
-import { navii } from "../App";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { IoMdLogOut } from "react-icons/io";
-
 
 const Navbar = () => {
   const navigate = useNavigate(); 
-  const { isLoggedin, setisLoggedin } = useContext(navii);
-  const { userName, setuserName } = useContext(navii);
+
+
+  var Name = localStorage.getItem('Name');
+  var isLoggedin = localStorage.getItem('isLoggedin');
+  console.log(isLoggedin);
+
 
   const handleLogout = () => {
-    setisLoggedin(false);
+    // localStorage.setItem('isLoggedin',false)
+    localStorage.removeItem('Name')
+    localStorage.removeItem('isLoggedin')
     alert("You have been logged out!");
     navigate("/")
   };
+
+ 
 
   return (
     <div>
@@ -28,7 +33,7 @@ const Navbar = () => {
               {isLoggedin ? (
                 <>
                   <div className="items-center flex gap-5">
-                    <h1 className="font-bold text-2xl">Welcome {userName}</h1>
+                    <h1 className="font-bold text-2xl">Welcome {Name}</h1>
                     <IoMdLogOut onClick={handleLogout} className=" cursor-pointer text-red-700 text-3xl font-bold" />
                   </div>
                 </>
