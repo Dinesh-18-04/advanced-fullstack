@@ -12,7 +12,7 @@ const Signup = () => {
     e.preventDefault();
     const data = { Name, Email, Password };
     try {
-      const res = await axios.post("http://localhost:6001/signup", data);
+      const res = await axios.post("https://water-tracker-7x7g.onrender.com/signup", data);
       if (res.status === 200) {
         alert("SignUp is Successfull...");
         navigate("/login")

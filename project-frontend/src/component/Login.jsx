@@ -12,7 +12,7 @@ const Login = () => {
     console.log(data);
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:6001/login", data);
+      const res = await axios.post("https://water-tracker-7x7g.onrender.com/login", data);
       if (res.status === 200) {
         localStorage.setItem('isLoggedin',res.data.isLoggedin)
         alert("Logged in Successfully...");
