@@ -24,7 +24,7 @@ app.post("/signup", async (req, res) => {
   try {
     var { Name, Email, Password } = req.body;
     var con = await signup.findOne({ Email: Email });
-    console.log(con);
+    // console.log(con);
     if (con) {
       return res.status(409).json({ Message: "Email is already in use." });
     }
@@ -44,7 +44,7 @@ app.post("/signup", async (req, res) => {
 
 app.post("/login", async (req, res) => {
   var { Email, Password } = req.body;
-  console.log(Email, Password);
+  // console.log(Email, Password);
   try {
     var existingUser = await signup.findOne({ Email: Email });
     if (existingUser) {

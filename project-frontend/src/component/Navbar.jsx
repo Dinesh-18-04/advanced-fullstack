@@ -2,14 +2,16 @@ import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { navii } from "../App";
 import { useNavigate } from "react-router-dom";
+import { IoMdLogOut } from "react-icons/io";
+
+
 const Navbar = () => {
   const navigate = useNavigate(); 
   const { isLoggedin, setisLoggedin } = useContext(navii);
   const { userName, setuserName } = useContext(navii);
 
-  // Logout handler
   const handleLogout = () => {
-    setisLoggedin(false); // Update state to logged out
+    setisLoggedin(false);
     alert("You have been logged out!");
     navigate("/")
   };
@@ -27,12 +29,7 @@ const Navbar = () => {
                 <>
                   <div className="items-center flex gap-5">
                     <h1 className="font-bold text-2xl">Welcome {userName}</h1>
-                    <button
-                      onClick={handleLogout}
-                      className="bg-gray-700 hover:bg-gray-300 transition-all hover:text-black rounded-md text-white font-bold px-4 py-2 text-xl"
-                    >
-                      Logout
-                    </button>
+                    <IoMdLogOut onClick={handleLogout} className=" cursor-pointer text-red-700 text-3xl font-bold" />
                   </div>
                 </>
               ) : (
