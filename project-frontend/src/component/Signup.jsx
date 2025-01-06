@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import {ToastContainer , toast} from 'react-toastify'
 
 const Signup = () => {
   var [Name, setName] = useState("");
@@ -14,13 +15,13 @@ const Signup = () => {
     try {
       const res = await axios.post("https://water-tracker-7x7g.onrender.com/signup", data);
       if (res.status === 200) {
-        alert("SignUp is Successfull...");
-        navigate("/login")
+        toast.success("SignUp Successfully...");
+        setTimeout(()=> navigate("/login"),3000)
       } else {
-        alert("SignUp is failed...");
+        toast.error("SignUp is failed...");
       }
     } catch (err) {
-      alert(err.response.data.Message);
+      toast.error(err.response.data.Message);
     }
   };
   return (
@@ -84,6 +85,7 @@ const Signup = () => {
               Sign Up
             </button>
           </form>
+          <ToastContainer position="top-right" autoClose="3000"/>
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import {ToastContainer , toast} from 'react-toastify'
 
 const Login = () => {
   var [Email, setEmail] = useState("");
@@ -10,22 +11,27 @@ const Login = () => {
   const handleLogin = async (e) => {
     var data = { Email, Password };
     console.log(data);
+
     e.preventDefault();
     try {
-      const res = await axios.post("https://water-tracker-7x7g.onrender.com/login", data);
+      const res = await axios.post(
+        "https://water-tracker-7x7g.onrender.com/login",
+        data
+      );
       if (res.status === 200) {
-        localStorage.setItem('isLoggedin',res.data.isLoggedin)
-        alert("Logged in Successfully...");
-        localStorage.setItem('Name',res.data.Name)
-        navigate("/dashboard");
+        localStorage.setItem("isLoggedin", res.data.isLoggedin);
+        toast.success("Logged in Successfully...");
+
+        localStorage.setItem("Name", res.data.Name);
+        setTimeout(() => navigate("/dashboard"), 3000);
       } else {
-        localStorage.setItem('isLoggedin',false)
-        alert("Login failed...");
+        localStorage.setItem("isLoggedin", false);
+        toast.error("Invalid Credentials");
       }
     } catch (err) {
-      localStorage.setItem('isLoggedin',false)
+      localStorage.setItem("isLoggedin", false);
       console.log(err);
-      alert("LogIn failed...");
+      toast.error("LogIn failed...");
     }
   };
 
@@ -71,6 +77,7 @@ const Login = () => {
               Log In
             </button>
           </form>
+          <ToastContainer position="top-right" autoClose={3000} />
         </div>
       </div>
     </div>
